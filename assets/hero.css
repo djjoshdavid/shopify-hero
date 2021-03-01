@@ -1,0 +1,109 @@
+/*******
+Globals
+*******/
+
+/*globale font styles*/
+* {
+  font-family: 'Roboto', sans-serif !important;
+}
+/*set global transitions*/
+.btn {
+	-webkit-transition: all 200ms ease-out;
+    -moz-transition: all 200ms ease-out;
+    -o-transition: all 200ms ease-out;
+    transition: all 200ms ease-out;
+}
+
+/*******************
+Hero Custom Section
+*******************/
+
+/*hero custom linner styles*/
+	.hero__inner .page-width {
+         width:50%;
+    }	 
+	.hero-right .hero__inner .page-width {
+         margin-left: 50%;
+    }
+    .hero-right .hero__inner .page-width > *{
+         text-align:left;
+    }
+	.hero-right .hero__inner .page-width > .btn.hero__btn {
+         float:left
+    }
+	.hero-center .hero__inner .page-width {
+         width:60%;
+    }
+	.hero-left .hero__inner .page-width {
+         margin-left: 0;
+    }
+
+    .hero__inner .mega-title {
+        color:#fff;
+        font-family: 'Roboto', sans-serif !important; 
+        font-size: 46px; 
+        font-weight:700;
+    }
+    .hero__inner .mega-subtitle {
+        color:#fff;
+        font-family: 'Roboto', sans-serif !important; 
+        font-size: 24px;
+        font-weight:300;}
+    .hero__inner .btn.hero__btn {
+        color:#fff;
+        font-family: 'Roboto', sans-serif !important; 
+        font-size:20px; 
+        font-weight:300;
+        border-radius: 30px;
+        padding: 10px 40px;  
+        margin-top: 20px;
+    }
+	.hero__inner .btn.hero__btn:hover {
+        color: #57ad68;
+        background-color:#fff !important;
+    }
+
+/*hero custom desktop/mobile wrap switcher*/
+	.hero.hero-mobile { 
+        display:none !important;
+    }
+	.hero.hero-desktop { 
+        display:table !important;
+        height:500px; 
+    }
+
+/***********
+Mobile Styles
+************/ 
+
+@media only screen and (max-width: 750px) {
+
+/*hero desktop/mobile wrap switcher*/
+  	.hero.hero-mobile { 
+        display:table !important;
+        height:640px; 
+    }
+	.hero.hero-desktop { 
+        display:none !important; 
+    }
+  	.hero.hero-mobile .page-width {
+        width:80%
+    }
+  
+/*hero custom linner styles*/
+  	.hero__inner .mega-title {
+        color:#fff;
+        font-family: 'Roboto', sans-serif !important; 
+        font-size: 36px; 
+        font-weight:700;
+    }
+  	.hero__inner .mega-subtitle {
+        color:#fff;
+        font-family: 'Roboto', sans-serif !important; 
+        font-size: 18px; 
+        font-weight:300;
+    }
+    .hero__inner .btn.hero__btn {
+        margin-top: 2px;
+    }
+}

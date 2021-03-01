@@ -1,0 +1,184 @@
+<div id="{{ section.id }}" section-type="hero-section">
+    <div class="hero hero-custom  hero-desktop hero-{{section.settings.alignment}} hero-{{ section.id }} box lazyload js"
+         id="Hero-{{ section.id }}"
+         {%- if section.settings.image -%}
+          {% unless section.settings.image.alt == blank %}
+          role="img"
+          aria-label="{{ section.settings.image.alt | escape }}"
+          {% endunless %}
+         data-bg="{{ section.settings.image | img_url: '300x300' }}"
+         data-bgset="{% include 'bgset', image: section.settings.image %}"
+         style="background-position: cover; background-image: url({{ section.settings.image }})"
+         data-image-loading-animation
+         {%- endif -%}>
+    {%- if section.settings.image == blank -%}
+      <div class="placeholder-background">
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      </div>
+    {%- endif -%}
+      <div class="hero__inner">
+        <div class="page-width 
+             {% if section.settings.alignment == 'right' %} text-right {% endif %} 
+             {% if section.settings.alignment == 'center' %} text-center {% endif %}
+             {% if section.settings.alignment == 'left' %} text-left {% endif %} ">
+          {%- if section.settings.title != blank -%}
+            <h2 class="h1 mega-title">{{ section.settings.title | escape }}</h2>
+          {%- endif -%}
+          {%- if section.settings.textarea != blank -%}
+            <div class="rte-setting mega-subtitle">{{ section.settings.textarea }}</div>
+          {%- endif -%}
+          
+          {%- if section.settings.cta_text != blank and section.settings.cta_url != blank -%}
+          	<a href="{{ section.settings.cta_url }}"
+              class="btn hero__btn"
+               style="background-color: {{ section.settings.color }}">
+              {{ section.settings.cta_text }}
+            </a>
+          {%- endif -%} 
+        </div>
+      </div>
+    </div>
+    <div class="hero hero-custom hero-mobile  hero-{{ section.id }} box lazyload js"
+         id="Hero-{{ section.id }}"
+         {%- if section.settings.mobile-image -%}
+          {% unless section.settings.mobile-image.alt == blank %}
+          role="img"
+          aria-label="{{ section.settings.mobile-image.alt | escape }}"
+          {% endunless %}
+         data-bg="{{ section.settings.image | img_url: '300x300' }}"
+         data-bgset="{% include 'bgset', image: section.settings.mobile-image %}"
+         style="background-position: cover; background-image: url({{ section.settings.mobile-image }})"
+         data-image-loading-animation
+         {%- endif -%}>
+    {%- if section.settings.mobile-image == blank -%}
+      <div class="placeholder-background">
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      </div>
+    {%- endif -%}
+      <div class="hero__inner">
+        <div class="page-width text-center">
+          {%- if section.settings.title != blank -%}
+            <h2 class="h1 mega-title">{{ section.settings.title | escape }}</h2>
+          {%- endif -%}
+          {%- if section.settings.textarea != blank -%}
+            <div class="rte-setting mega-subtitle">{{ section.settings.textarea }}</div>
+          {%- endif -%}
+          {%- if section.settings.cta_text != blank and section.settings.cta_url != blank -%}
+          	<a href="{{ section.settings.cta_url }}"
+              class="btn hero__btn"
+               style="background-color: {{ section.settings.color }}">
+              {{ section.settings.cta_text }}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div> 
+    <noscript>
+      <div class="hero"{% if section.settings.image %}{% unless section.settings.image.alt == blank %} role="img" aria-label="{{ section.settings.image.alt | escape }}"{% endunless %} style="background-image: url('{{ section.settings.image | img_url: '2048x' }}'); background-position: center ;"{% endif %}></div>
+    </noscript>
+</div>
+
+{% schema %}
+{
+  "name": {
+    "en": "Image with text overlay"
+  },
+  "class": "index-section index-section--flush",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": {
+        "en": "Image"
+      }
+    },
+	{
+      "type": "image_picker",
+      "id": "mobile-image",
+      "label": {
+        "en": "Mobile Image"
+      }
+    },
+	{
+      "type": "color",
+      "id": "color",
+      "label": {
+        "en": "Color Picker"
+      }
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": {
+        "en": "Text Alignment *Required"
+      },
+      "default": "center",
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en": "Left"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en": "Right"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en": "Center"
+          }
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": {
+        "en": "Title *Required"
+      },
+      "default": {
+        "en": "Hero Title"
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "textarea",
+      "label": {
+        "en": "Copy"
+      },
+      "default": {
+        "en": "<p>In lorem leo, sodales et ullamcorper tempor, facilisis id nibh. Maecenas nibh risus, rutrum nec tellus sed, pharetra gravida nulla. Proin imperdiet </p>"
+      }
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": {
+        "en": "CTA Text"
+      }
+    },
+	{
+      "type": "url",
+      "id": "cta_url",
+      "label": {
+        "en": "CTA URL"
+      }
+    }
+    
+  ],
+  "presets": [
+    {
+      "name": {
+        "en": "Hero"
+      },
+      "category": {
+        "en": "Image"
+      }
+    }
+  ]
+}
+{% endschema %}
